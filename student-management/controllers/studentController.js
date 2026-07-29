@@ -1,5 +1,23 @@
 const Student = require("../models/Student");
 
+exports.adminLogin = async (req, res) => {
+    const { username, password } = req.body;
+
+    const isValidAdmin =
+        username === "admin" && password === "admin123";
+
+    if (!isValidAdmin) {
+        return res.status(401).json({
+            message: "Invalid admin credentials"
+        });
+    }
+
+    return res.json({
+        message: "Login successful",
+        role: "admin"
+    });
+};
+
 exports.createStudent = async (req, res) => {
     const student = await Student.create(req.body);
     res.json(student);

@@ -82,6 +82,17 @@ body {
   }
 }
 
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 45vh;
+}
+
+.login-card {
+  width: min(100%, 430px);
+}
+
 /* Forms */
 .form-group {
   margin-bottom: 1.5rem;

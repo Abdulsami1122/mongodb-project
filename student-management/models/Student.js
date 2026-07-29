@@ -24,4 +24,4 @@ const studentSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-module.exports = mongoose.model("Sami", studentSchema);
+module.exports = mongoose.model("Samii", studentSchema);
