@@ -1,21 +1,27 @@
 const Student = require("../models/Student");
+const User = require("../models/User");
 
 exports.adminLogin = async (req, res) => {
     const { username, password } = req.body;
 
-    const isValidAdmin =
-        username === "admin" && password === "admin123";
+    try {
+        const user = await User.findOne({ username, password });
 
-    if (!isValidAdmin) {
-        return res.status(401).json({
-            message: "Invalid admin credentials"
+        if (!user) {
+            return res.status(401).json({
+                message: "Invalid credentials"
+            });
+        }
+
+        return res.json({
+            message: "Login successful",
+            role: user.role
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Server error during login"
         });
     }
-
-    return res.json({
-        message: "Login successful",
-        role: "admin"
-    });
 };
 
 exports.createStudent = async (req, res) => {
