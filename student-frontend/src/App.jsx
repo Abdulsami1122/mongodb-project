@@ -6,8 +6,9 @@ import StudentForm from './components/StudentForm';
 import StudentList from './components/StudentList';
 import './index.css';
 
-const API_URL = 'http://localhost:5000/api/students';
-const AUTH_URL = 'http://localhost:5000/api/auth/login';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = `${API_BASE}/api/students`;
+const AUTH_URL = `${API_BASE}/api/auth/login`;
 
 function App() {
   const [students, setStudents] = useState([]);
